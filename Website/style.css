@@ -1,0 +1,19 @@
+body {
+    margin: 10px 20px 10px 20px;
+    background-color: snow;
+}
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+#med_table tbody tr td input {
+    width: 30px;
+    border: 0;
+}
+#med_table tbody tr td input:focus {
+    outline: none;
+}
+.del_button {
+    background-color: white;
+    border:0;
+}
