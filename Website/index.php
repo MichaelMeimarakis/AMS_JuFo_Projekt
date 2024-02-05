@@ -16,10 +16,6 @@ include ('./main.php');
         <h2>AMS - Automatischer Medikamenten Spender</h2>
         <br/>
         <main>
-            <article id="status_article">
-                Status: <b><?=$benutzerDaten[3]?><!--TODO:Add Status--></b>
-                <p><!--TODO:Add Status Description--></p>
-            </article>
             <br/><br/>
             <article id="zeiten_article">
                 <input type="time" id="morgen_zeit" value="<?=substr($benutzerDaten[0],0,5)?>"/>
@@ -66,7 +62,8 @@ include ('./main.php');
                 <button onclick="med_aendern();">Medikamente ändern</button>
                 <button onclick="window.location.href='./add.php'">Medikament hinzufügen</button>
             </article>
-            <?=var_dump($_POST)?>
+            <br/><br/>
+            <button onclick="window.location.href = window.location.href;">Refresh</button>
         </main>
         <script src="./main.js"></script>
     </body>
