@@ -16,8 +16,8 @@ include ('./main.php');
         <h2>AMS - Automatischer Medikamenten Spender</h2>
         <br/>
         <main>
-            <br/><br/>
             <article id="zeiten_article">
+                <h3>Zeitanzeige</h3>
                 <input type="time" id="morgen_zeit" value="<?=substr($benutzerDaten[0],0,5)?>"/>
                 <input type="time" id="mittag_zeit" value="<?=substr($benutzerDaten[1],0,5)?>"/>
                 <input type="time" id="abend_zeit" value="<?=substr($benutzerDaten[2],0,5)?>"/>
@@ -26,6 +26,7 @@ include ('./main.php');
             </article>
             <br/><br/>
             <article id="medikamente">
+                <h3>Medikamentenanzeige</h3>
                 <table id="med_table">
                     <thead>
                         <tr>
@@ -41,7 +42,6 @@ include ('./main.php');
                         </tr>
                     </thead>
                     <tbody>
-                        <!--TODO:Add basic "add med"/"delete med" functionality-->
                         <?php
                         for($i = 0; $i < count($medikamente); $i++) {
                             $med_row = $medikamente[$i];
@@ -51,10 +51,9 @@ include ('./main.php');
                                 ."<td><input type='number' value='".strval((ord($med_row[1][$tag])&(3<<2))>>2)."'/></td>"
                                 ."<td><input type='number' value='".strval(ord($med_row[1][$tag])&3)."'/></td>";
                             }
-                        
                             echo "<td><button class=\"del_button\" onclick='med_entf(".strval($i).")'>&#x2718</button></td>"
                             ."</tr>";
-                        }   
+                        }
                         ?>
                     </tbody>
                 </table>

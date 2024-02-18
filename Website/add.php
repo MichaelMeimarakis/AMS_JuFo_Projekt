@@ -16,7 +16,6 @@ $unused_meds = $stmt->get_result()->fetch_all();
     <body>
         <h2>AMS - Automatischer Medikamenten Spender (Hinzufügen)</h2><br/>
         <main>
-            <?=var_dump($unused_meds)?>
             <div>
             <label for="select_med">Medikament: </label>
             <input list="unused_meds" placeholder="Medikament" id="select_med">

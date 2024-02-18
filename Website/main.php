@@ -200,8 +200,8 @@ if(count($_POST) > 0 && isset($_POST["Aktion"])) {
 }
 
 
-// Mit BenutzerID zusammenhängende Daten wie Zeiten und Gerät-Status abrufen
-$stmt = $conn->prepare("SELECT MorgenZeit, MittagZeit, AbendZeit, Status FROM ams.benutzer WHERE BenutzerID=?;");
+// Mit BenutzerID zusammenhängende Daten wie Zeiten abrufen
+$stmt = $conn->prepare("SELECT MorgenZeit, MittagZeit, AbendZeit FROM ams.benutzer WHERE BenutzerID=?;");
 $stmt->bind_param("i",$benutzerID); $stmt->execute();
 $benutzerDaten = $stmt->get_result()->fetch_row();
 
