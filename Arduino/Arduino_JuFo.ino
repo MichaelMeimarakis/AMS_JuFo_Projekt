@@ -13,7 +13,8 @@
 
 // Struct zur Anfrage and Speicherung der Server-Daten
 struct ServerData {
-  ServerData() {
+  ServerData() : _morgen(0), _mittag(0), _abend(0) {};
+  void Anfrage() {    
     // Afrage an den Server
     // Da kein Server benutzt wird, werden die Daten als Beispiel ausgewählt
     _morgen = 00 * 60 + 37;
@@ -23,6 +24,7 @@ struct ServerData {
   int _morgen, _mittag, _abend;
   
 };
+ServerData sd;
 
 /// Deklaration und Initialisierung von Variablen, die die Pin-Werte enthalten
 
@@ -190,13 +192,13 @@ void RotateBy(int m, unsigned int r) {
 
 /// Main Loop Funktion
 void loop() {
-  ServerData sd = ServerData();
+  if(rtc.now().hour() * 60 + rtc.now().minute() == 0)sd.Anfrage();
 
   // Testen, ob ein Breakpoint erreicht wurde 
 #ifndef USING_TIME_DET
   if (digitalRead(timeButton)) {
 #else
-  if (rtc.now().hour() * 60 + rtc.now().minute() == (Motor == 0 ? sd._morgen : Motor == 1 ? sd._mittag : sd._abend)) {
+  if (rtc.now().hour() * 60 + rtc.now().minute() > (Motor == 0 ? sd._morgen : Motor == 1 ? sd._mittag : sd._abend)) {
 #endif
     // Motor rotieren
     RotateBy(Motor, 1);
